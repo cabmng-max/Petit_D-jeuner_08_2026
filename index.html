@@ -11,7 +11,7 @@
 .langs{display:flex;gap:8px;justify-content:center;position:sticky;top:8px;z-index:5;margin:8px 0 18px}.langs button{border:1px solid var(--line);background:#fff;padding:10px 14px;border-radius:999px;font-weight:800;box-shadow:var(--shadow)}.langs button.active{background:#173866;color:#fff}
 .intro,.name,.special{background:#fff;border:1px solid var(--line);border-radius:18px;padding:14px;box-shadow:var(--shadow);margin-bottom:12px}.name input,.special textarea{width:100%;border:1px solid #d8c9b4;border-radius:12px;padding:12px;font-size:17px;margin-top:8px}.special textarea{min-height:75px}
 .section{background:var(--card);border:1px solid var(--line);border-radius:20px;overflow:hidden;margin:13px 0;box-shadow:var(--shadow)}.section h2{margin:0;padding:12px 14px;background:#f3e5cf;color:#5d301a;font-size:19px}.hint{font-size:13px;font-weight:600;opacity:.75}
-.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;padding:12px}.item{border:1px solid #eadfce;border-radius:16px;padding:10px;display:grid;grid-template-columns:54px 1fr 26px;gap:8px;align-items:center;min-height:78px;background:#fff}.emoji{font-size:37px;text-align:center}.label{font-weight:750;line-height:1.15}.ar{font-family:Tahoma,Arial,sans-serif;direction:rtl}.item input{width:22px;height:22px;accent-color:#55752a}.item.disabled{opacity:.42;background:#f4f1ec}.counter{padding:0 14px 12px;font-size:13px;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;padding:12px}.item{border:1px solid #eadfce;border-radius:16px;padding:10px;display:grid;grid-template-columns:54px 1fr 26px;gap:8px;align-items:center;min-height:78px;background:#fff}.emoji{font-size:37px;text-align:center}.foodimg{width:54px;height:54px;object-fit:contain;display:block}.label{font-weight:750;line-height:1.15}.ar{font-family:Tahoma,Arial,sans-serif;direction:rtl}.item input{width:22px;height:22px;accent-color:#55752a}.item.disabled{opacity:.42;background:#f4f1ec}.counter{padding:0 14px 12px;font-size:13px;color:var(--muted)}
 .summary{background:#fff;border:1px solid var(--line);border-radius:20px;padding:15px;box-shadow:var(--shadow);margin-top:14px}.summary h2{margin:0 0 10px}.summary pre{white-space:pre-wrap;font:inherit;line-height:1.45;margin:0}
 .actions{position:fixed;left:0;right:0;bottom:0;background:rgba(255,250,242,.96);backdrop-filter:blur(10px);padding:10px 14px calc(10px + env(safe-area-inset-bottom));border-top:1px solid var(--line);display:flex;gap:10px;justify-content:center}.actions button{max-width:390px;flex:1;border:0;border-radius:15px;padding:15px 12px;font-size:16px;font-weight:900}.preview{background:#e9dfcf;color:#263247}.send{background:#1fa855;color:white}
 .footer{text-align:center;font-family:Georgia,serif;font-size:22px;color:#173866;padding:25px 10px 0}.footer em{color:#a33b20}
@@ -42,21 +42,21 @@
 </div>
 <script>
 const sections=[
-{id:"bread",fr:"Pain & viennoiserie",ar:"الخبز والمعجنات",max:2,items:[
-["🥖","Baguette / pain frais","باغيت / خبز طازج"],["🍞","Pain complet","خبز كامل"],["🍞","Toast grillé","توست محمص"],["🥐","Croissant","كرواسون"],["🥐","Pain au chocolat","خبز بالشوكولاتة"],["🫓","Mlawi","ملاوي"],["🫓","Pain tabouna","خبز طابونة"]]},
+{id:"bread",fr:"Pain & viennoiserie",ar:"الخبز والمعجنات",max:3,items:[
+["🥖","Baguette / pain frais","باغيت / خبز طازج"],["🍞","Pain complet","خبز كامل"],["🍞","Toast grillé","توست محمص"],["data:image/svg+xml;base64,CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2aWV3Qm94PSIwIDAgMTIwIDgwIj4KPHJlY3Qgd2lkdGg9IjEyMCIgaGVpZ2h0PSI4MCIgZmlsbD0id2hpdGUiLz4KPHBhdGggZD0iTTE4IDQ3YzgtMjYgMzEtMzQgNDQtMTYgMTMtMTggMzYtMTAgNDAgMTYtOS05LTE4LTEyLTI2LTctNyA0LTEwIDEyLTE0IDIwLTQtOC04LTE2LTE1LTIwLTgtNS0xNy0yLTI5IDd6IiBmaWxsPSIjZDk4YTFkIiBzdHJva2U9IiM5YjU3MTEiIHN0cm9rZS13aWR0aD0iMyIvPgo8cGF0aCBkPSJNMzYgMzFjNCA3IDcgMTQgOCAyMk02MiAyOGMwIDggMCAxNiAwIDI4TTg0IDMyYy00IDctNyAxNC04IDIxIiBmaWxsPSJub25lIiBzdHJva2U9IiNmNWJmNTUiIHN0cm9rZS13aWR0aD0iNCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+Cjwvc3ZnPg==","Croissant","كرواسون"],["data:image/svg+xml;base64,CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2aWV3Qm94PSIwIDAgMTIwIDgwIj4KPHJlY3Qgd2lkdGg9IjEyMCIgaGVpZ2h0PSI4MCIgZmlsbD0id2hpdGUiLz4KPHJlY3QgeD0iMjIiIHk9IjIxIiB3aWR0aD0iNzYiIGhlaWdodD0iNDAiIHJ4PSIxMiIgZmlsbD0iI2Q5OTEyNSIgc3Ryb2tlPSIjOWI1NzExIiBzdHJva2Utd2lkdGg9IjMiLz4KPHBhdGggZD0iTTM1IDIzYzUgMTAgNSAyNiAwIDM2TTU4IDIzYzUgMTAgNSAyNiAwIDM2TTgxIDIzYzUgMTAgNSAyNiAwIDM2IiBzdHJva2U9IiNmN2M2NmEiIHN0cm9rZS13aWR0aD0iNCIgZmlsbD0ibm9uZSIvPgo8cmVjdCB4PSIzNCIgeT0iNDkiIHdpZHRoPSI4IiBoZWlnaHQ9IjEzIiByeD0iMiIgZmlsbD0iIzRiMjUxNSIvPjxyZWN0IHg9Ijc3IiB5PSI0OSIgd2lkdGg9IjgiIGhlaWdodD0iMTMiIHJ4PSIyIiBmaWxsPSIjNGIyNTE1Ii8+Cjwvc3ZnPg==","Pain au chocolat","خبز بالشوكولاتة"],["🫓","Mlawi","ملاوي"],["🫓","Pain tabouna","خبز طابونة"]]},
 {id:"eggs",fr:"Œufs",ar:"البيض",max:1,items:[
-["🍳","Œufs au plat","بيض مقلي"],["🍳","Omelette nature","أومليت طبيعي"],["🧀","Omelette au fromage","أومليت بالجبن"],["🍳","Œufs brouillés","بيض مخفوق"],["🥚","Œufs durs","بيض مسلوق"],["🚫","Sans œufs","بدون بيض"]]},
-{id:"savory",fr:"Accompagnements salés",ar:"المرافقات المالحة",max:2,items:[
+["data:image/svg+xml;base64,CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2aWV3Qm94PSIwIDAgMTIwIDgwIj4KPHJlY3Qgd2lkdGg9IjEyMCIgaGVpZ2h0PSI4MCIgZmlsbD0id2hpdGUiLz4KPHBhdGggZD0iTTEzIDQzYzItMTcgMTgtMjYgMzQtMTkgOC05IDI1LTggMzEgMiAxNy00IDI5IDcgMjkgMjEtNSAxNS0yMiAxOS0zNyAxMy0xMCA4LTI3IDctMzUtMi0xMiAxLTIxLTUtMjItMTV6IiBmaWxsPSIjZmZmZGY2IiBzdHJva2U9IiNkOGQwYzUiIHN0cm9rZS13aWR0aD0iMiIvPgo8Y2lyY2xlIGN4PSI0MyIgY3k9IjQyIiByPSIxMiIgZmlsbD0iI2Y1YTgwMCIvPjxjaXJjbGUgY3g9Ijc3IiBjeT0iNDIiIHI9IjEyIiBmaWxsPSIjZjVhODAwIi8+Cjwvc3ZnPg==","Œufs au plat","بيض مقلي"],["data:image/svg+xml;base64,CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2aWV3Qm94PSIwIDAgMTIwIDgwIj4KPHJlY3Qgd2lkdGg9IjEyMCIgaGVpZ2h0PSI4MCIgZmlsbD0id2hpdGUiLz4KPHBhdGggZD0iTTE4IDUxYzEwLTIyIDI0LTMxIDQyLTMxczM0IDkgNDIgMzFjLTE2IDEwLTY3IDEwLTg0IDB6IiBmaWxsPSIjZjNiMTJiIiBzdHJva2U9IiNjNzdiMTIiIHN0cm9rZS13aWR0aD0iMyIvPgo8cGF0aCBkPSJNMjkgNDVjMTIgNSA0OCA2IDY0IDAiIHN0cm9rZT0iI2ZmZDc2YyIgc3Ryb2tlLXdpZHRoPSI0IiBmaWxsPSJub25lIi8+CjxjaXJjbGUgY3g9IjQ1IiBjeT0iMzUiIHI9IjIiIGZpbGw9IiNkNThhMTgiLz48Y2lyY2xlIGN4PSI2NiIgY3k9IjMyIiByPSIyIiBmaWxsPSIjZDU4YTE4Ii8+PGNpcmNsZSBjeD0iODAiIGN5PSIzOSIgcj0iMiIgZmlsbD0iI2Q1OGExOCIvPgo8L3N2Zz4=","Omelette nature","أومليت طبيعي"],["🧀","Omelette au fromage","أومليت بالجبن"],["data:image/svg+xml;base64,CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2aWV3Qm94PSIwIDAgMTIwIDgwIj4KPHJlY3Qgd2lkdGg9IjEyMCIgaGVpZ2h0PSI4MCIgZmlsbD0id2hpdGUiLz4KPGVsbGlwc2UgY3g9IjYwIiBjeT0iNTkiIHJ4PSI0MyIgcnk9IjEwIiBmaWxsPSIjZTllNGRjIi8+CjxwYXRoIGQ9Ik0yOSA1MGM0LTExIDEyLTEyIDE4LTUgMy0xMyAxNS0xNSAyMi01IDctOCAxOC01IDE5IDYgOS0yIDE0IDUgMTEgMTJIMjVjLTUtNC0zLTcgNC04eiIgZmlsbD0iI2VmYjEyYiIgc3Ryb2tlPSIjYzc3YjEyIiBzdHJva2Utd2lkdGg9IjIiLz4KPHBhdGggZD0iTTM5IDQ4bDkgM20xMC05IDYgN20xNC00IDcgNSIgc3Ryb2tlPSIjZmZkOTZiIiBzdHJva2Utd2lkdGg9IjMiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8L3N2Zz4=","Œufs brouillés","بيض مخفوق"],["🥚","Œufs durs","بيض مسلوق"],["🚫","Sans œufs","بدون بيض"]]},
+{id:"savory",fr:"Accompagnements salés",ar:"المرافقات المالحة",max:3,items:[
 ["🧀","Fromage","جبن"],["🍗","Jambon de dinde","صدر ديك رومي"],["🐟","Thon","تونة"],["🫒","Olives","زيتون"],["🥗","Tomates & concombre","طماطم وخيار"],["🫒","Huile d’olive","زيت زيتون"],["🌶️","Harissa","هريسة"]]},
-{id:"sweet",fr:"Côté sucré",ar:"الخيارات الحلوة",max:2,items:[
+{id:"sweet",fr:"Côté sucré",ar:"الخيارات الحلوة",max:3,items:[
 ["🧈","Beurre","زبدة"],["🍯","Miel","عسل"],["🍓","Confiture de fraise","مربى الفراولة"],["🍑","Confiture d’abricot","مربى المشمش"],["🍫","Pâte à tartiner chocolat","شوكولاتة للدهن"],["🥣","Bsissa","بسيسة"],["🥛","Yaourt","زبادي"]]},
-{id:"fruit",fr:"Fruits",ar:"الفواكه",max:2,items:[
+{id:"fruit",fr:"Fruits",ar:"الفواكه",max:3,items:[
 ["🍉","Pastèque","بطيخ"],["🍈","Melon","شمام"],["🍇","Raisins","عنب"],["🍑","Pêche / nectarine","خوخ / نكتارين"],["🍓","Assiette de fruits de saison","طبق فواكه موسمية"],["🚫","Sans fruits","بدون فواكه"]]},
-{id:"hot",fr:"Boisson chaude",ar:"المشروبات الساخنة",max:2,items:[
-["☕","Expresso","إسبريسو"],["☕","Café au lait","قهوة بالحليب"],["☕","Café filtre","قهوة مفلترة"],["☕","Cappuccino","كابتشينو"],["🍵","Thé","شاي"],["🌿","Thé à la menthe","شاي بالنعناع"],["🥛","Lait chaud","حليب ساخن"],["🍫","Chocolat chaud","شوكولاتة ساخنة"]]},
-{id:"cold",fr:"Boisson fraîche",ar:"المشروبات الباردة",max:2,items:[
-["🍊","Jus d’orange","عصير برتقال"],["🍋","Citronnade","ليموناضة"],["🧃","Jus de fruits","عصير فواكه"],["🥛","Lait froid","حليب بارد"],["💧","Eau plate","ماء عادي"],["🫧","Eau gazeuse","ماء غازي"]]},
-{id:"extra",fr:"Petit plus",ar:"إضافات صغيرة",max:2,items:[
+{id:"hot",fr:"Boisson chaude",ar:"المشروبات الساخنة",max:3,items:[
+["☕","Café au lait","قهوة بالحليب"],["☕","Café filtre","قهوة مفلترة"],["🍵","Thé","شاي"],["🥛","Lait chaud","حليب ساخن"],["🍫","Chocolat chaud","شوكولاتة ساخنة"],["🥛","Chocolat au lait","شوكولاتة بالحليب"],["🥣","Droo","درع"]]},
+{id:"cold",fr:"Boisson fraîche",ar:"المشروبات الباردة",max:3,items:[
+["🍋","Citronnade","ليموناضة"],["🧃","Jus de fruits","عصير فواكه"],["🥛","Lait froid","حليب بارد"],["💧","Eau plate","ماء عادي"],["🍓","Jus de fraise","عصير فراولة"],["🥭","Jus de mangue","عصير مانجو"]]},
+{id:"extra",fr:"Petit plus",ar:"إضافات صغيرة",max:3,items:[
 ["🥣","Granola","جرانولا"],["🌾","Flocons d’avoine","رقائق الشوفان"],["🥜","Fruits secs / amandes","مكسرات / لوز"],["🥛","Yaourt nature","زبادي طبيعي"],["🍯","Miel supplémentaire","عسل إضافي"]]}
 ];
 let lang="fr"; const chosen={};
@@ -65,6 +65,7 @@ fr:{title1:"COMPOSEZ",title2:"votre petit-déjeuner chez la famille Mohamed Nace
 ar:{title1:"كَوِّن",title2:"فطورك لدى عائلة محمد ناصر",intro:"اختر ما ترغب فيه لفطورك. يتم تطبيق الحد الأقصى للاختيارات تلقائياً.",name:"الاسم",special:"هل لديك رغبة خاصة؟",sum:"فطورك",preview:"عرض الملخص",send:"إرسال عبر واتساب",footer:'عائلة محمد ناصر تتمنى لكم <em>شهية طيبة !</em>',max:n=>`حد أقصى ${n} اختيارين`,one:"اختيار واحد"},
 bi:{title1:"COMPOSEZ | كَوِّن",title2:"votre petit-déjeuner chez la famille Mohamed Naceur | فطورك لدى عائلة محمد ناصر",intro:"Composez votre plateau — اختر ما ترغب فيه. Les limites sont automatiques — يتم تطبيق الحد تلقائياً.",name:"Prénom / الاسم",special:"Une envie particulière ? / هل لديك رغبة خاصة؟",sum:"Votre plateau / فطورك",preview:"Récapitulatif / الملخص",send:"WhatsApp / واتساب",footer:'Famille Mohamed Naceur — عائلة محمد ناصر<br><em>Bon appétit ! — شهية طيبة !</em>',max:n=>`maximum ${n} / حد أقصى ${n}`,one:"1 choix / اختيار واحد"}
 };
+function visual(v){return v.startsWith("data:image/")?`<img class="foodimg" src="${v}" alt="">`:`<span class="emoji">${v}</span>`}
 function label(fr,ar){return lang==="fr"?fr:lang==="ar"?ar:`${fr}<br><span class="ar">${ar}</span>`}
 function render(){
  document.documentElement.lang=lang==="ar"?"ar":"fr";
@@ -79,7 +80,7 @@ function render(){
   s.items.forEach((it,ii)=>{
    const el=document.createElement("label"); el.className="item";
    const checked=chosen[s.id].has(ii);
-   el.innerHTML=`<span class="emoji">${it[0]}</span><span class="label">${label(it[1],it[2])}</span><input type="checkbox" ${checked?"checked":""}>`;
+   el.innerHTML=`${visual(it[0])}<span class="label">${label(it[1],it[2])}</span><input type="checkbox" ${checked?"checked":""}>`;
    const cb=el.querySelector("input"); cb.onchange=()=>toggle(s,ii,cb);
    grid.appendChild(el);
   });
