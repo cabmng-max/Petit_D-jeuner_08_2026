@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Petit-déjeuner — Famille Mohamed Naceur</title>
+<style>
+:root{--bg:#fffaf2;--card:#fff;--ink:#18243b;--muted:#6d6a65;--line:#eadfce;--accent:#8b4b22;--green:#58752c;--shadow:0 8px 24px rgba(55,38,20,.08)}
+*{box-sizing:border-box} body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:linear-gradient(#fffaf2,#fffdf9);color:var(--ink)}
+.wrap{max-width:820px;margin:auto;padding:18px 14px 110px}.hero{text-align:center;padding:16px 8px 10px}.hero h1{font-family:Georgia,serif;font-size:clamp(34px,8vw,56px);margin:0;color:#16315e}.hero .script{font-family:Georgia,serif;font-style:italic;color:var(--accent);font-size:clamp(25px,6vw,40px)}
+.langs{display:flex;gap:8px;justify-content:center;position:sticky;top:8px;z-index:5;margin:8px 0 18px}.langs button{border:1px solid var(--line);background:#fff;padding:10px 14px;border-radius:999px;font-weight:800;box-shadow:var(--shadow)}.langs button.active{background:#173866;color:#fff}
+.intro,.name,.special{background:#fff;border:1px solid var(--line);border-radius:18px;padding:14px;box-shadow:var(--shadow);margin-bottom:12px}.name input,.special textarea{width:100%;border:1px solid #d8c9b4;border-radius:12px;padding:12px;font-size:17px;margin-top:8px}.special textarea{min-height:75px}
+.section{background:var(--card);border:1px solid var(--line);border-radius:20px;overflow:hidden;margin:13px 0;box-shadow:var(--shadow)}.section h2{margin:0;padding:12px 14px;background:#f3e5cf;color:#5d301a;font-size:19px}.hint{font-size:13px;font-weight:600;opacity:.75}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;padding:12px}.item{border:1px solid #eadfce;border-radius:16px;padding:10px;display:grid;grid-template-columns:54px 1fr 26px;gap:8px;align-items:center;min-height:78px;background:#fff}.emoji{font-size:37px;text-align:center}.label{font-weight:750;line-height:1.15}.ar{font-family:Tahoma,Arial,sans-serif;direction:rtl}.item input{width:22px;height:22px;accent-color:#55752a}.item.disabled{opacity:.42;background:#f4f1ec}.counter{padding:0 14px 12px;font-size:13px;color:var(--muted)}
+.summary{background:#fff;border:1px solid var(--line);border-radius:20px;padding:15px;box-shadow:var(--shadow);margin-top:14px}.summary h2{margin:0 0 10px}.summary pre{white-space:pre-wrap;font:inherit;line-height:1.45;margin:0}
+.actions{position:fixed;left:0;right:0;bottom:0;background:rgba(255,250,242,.96);backdrop-filter:blur(10px);padding:10px 14px calc(10px + env(safe-area-inset-bottom));border-top:1px solid var(--line);display:flex;gap:10px;justify-content:center}.actions button{max-width:390px;flex:1;border:0;border-radius:15px;padding:15px 12px;font-size:16px;font-weight:900}.preview{background:#e9dfcf;color:#263247}.send{background:#1fa855;color:white}
+.footer{text-align:center;font-family:Georgia,serif;font-size:22px;color:#173866;padding:25px 10px 0}.footer em{color:#a33b20}
+.notice{font-size:13px;color:#8b3c2d;font-weight:700;margin-top:6px}
+@media(min-width:650px){.grid{grid-template-columns:repeat(3,1fr)}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="hero">
+    <h1 id="title1">COMPOSEZ</h1><div class="script" id="title2">votre petit-déjeuner chez la famille Mohamed Naceur</div>
+  </div>
+  <div class="langs">
+    <button data-lang="fr" class="active">Français</button>
+    <button data-lang="ar">العربية</button>
+    <button data-lang="bi">FR / عربي</button>
+  </div>
+  <div class="intro" id="intro">Choisissez ce que vous souhaitez pour votre plateau. Les limites sont appliquées automatiquement.</div>
+  <div class="name"><strong id="nameLabel">Prénom</strong><input id="guest" autocomplete="name"></div>
+  <div id="menu"></div>
+  <div class="special"><strong id="specialLabel">Une envie particulière ?</strong><textarea id="special"></textarea></div>
+  <div class="summary" id="summaryBox"><h2 id="sumTitle">Votre plateau</h2><pre id="summary"></pre></div>
+  <div class="footer" id="footer">Famille Mohamed Naceur vous souhaite <em>Bon appétit !</em></div>
+</div>
+<div class="actions">
+  <button class="preview" id="preview">Voir le récapitulatif</button>
+  <button class="send" id="send">Envoyer par WhatsApp</button>
+</div>
+<script>
+const sections=[
+{id:"bread",fr:"Pain & viennoiserie",ar:"الخبز والمعجنات",max:2,items:[
+["🥖","Baguette / pain frais","باغيت / خبز طازج"],["🍞","Pain complet","خبز كامل"],["🍞","Toast grillé","توست محمص"],["🥐","Croissant","كرواسون"],["🥐","Pain au chocolat","خبز بالشوكولاتة"],["🫓","Mlawi","ملاوي"],["🫓","Pain tabouna","خبز طابونة"]]},
+{id:"eggs",fr:"Œufs",ar:"البيض",max:1,items:[
+["🍳","Œufs au plat","بيض مقلي"],["🍳","Omelette nature","أومليت طبيعي"],["🧀","Omelette au fromage","أومليت بالجبن"],["🍳","Œufs brouillés","بيض مخفوق"],["🥚","Œufs durs","بيض مسلوق"],["🚫","Sans œufs","بدون بيض"]]},
+{id:"savory",fr:"Accompagnements salés",ar:"المرافقات المالحة",max:2,items:[
+["🧀","Fromage","جبن"],["🍗","Jambon de dinde","صدر ديك رومي"],["🐟","Thon","تونة"],["🫒","Olives","زيتون"],["🥗","Tomates & concombre","طماطم وخيار"],["🫒","Huile d’olive","زيت زيتون"],["🌶️","Harissa","هريسة"]]},
+{id:"sweet",fr:"Côté sucré",ar:"الخيارات الحلوة",max:2,items:[
+["🧈","Beurre","زبدة"],["🍯","Miel","عسل"],["🍓","Confiture de fraise","مربى الفراولة"],["🍑","Confiture d’abricot","مربى المشمش"],["🍫","Pâte à tartiner chocolat","شوكولاتة للدهن"],["🥣","Bsissa","بسيسة"],["🥛","Yaourt","زبادي"]]},
+{id:"fruit",fr:"Fruits",ar:"الفواكه",max:2,items:[
+["🍉","Pastèque","بطيخ"],["🍈","Melon","شمام"],["🍇","Raisins","عنب"],["🍑","Pêche / nectarine","خوخ / نكتارين"],["🍓","Assiette de fruits de saison","طبق فواكه موسمية"],["🚫","Sans fruits","بدون فواكه"]]},
+{id:"hot",fr:"Boisson chaude",ar:"المشروبات الساخنة",max:2,items:[
+["☕","Expresso","إسبريسو"],["☕","Café au lait","قهوة بالحليب"],["☕","Café filtre","قهوة مفلترة"],["☕","Cappuccino","كابتشينو"],["🍵","Thé","شاي"],["🌿","Thé à la menthe","شاي بالنعناع"],["🥛","Lait chaud","حليب ساخن"],["🍫","Chocolat chaud","شوكولاتة ساخنة"]]},
+{id:"cold",fr:"Boisson fraîche",ar:"المشروبات الباردة",max:2,items:[
+["🍊","Jus d’orange","عصير برتقال"],["🍋","Citronnade","ليموناضة"],["🧃","Jus de fruits","عصير فواكه"],["🥛","Lait froid","حليب بارد"],["💧","Eau plate","ماء عادي"],["🫧","Eau gazeuse","ماء غازي"]]},
+{id:"extra",fr:"Petit plus",ar:"إضافات صغيرة",max:2,items:[
+["🥣","Granola","جرانولا"],["🌾","Flocons d’avoine","رقائق الشوفان"],["🥜","Fruits secs / amandes","مكسرات / لوز"],["🥛","Yaourt nature","زبادي طبيعي"],["🍯","Miel supplémentaire","عسل إضافي"]]}
+];
+let lang="fr"; const chosen={};
+const t={
+fr:{title1:"COMPOSEZ",title2:"votre petit-déjeuner chez la famille Mohamed Naceur",intro:"Choisissez ce que vous souhaitez pour votre plateau. Les limites sont appliquées automatiquement.",name:"Prénom",special:"Une envie particulière ?",sum:"Votre plateau",preview:"Voir le récapitulatif",send:"Envoyer par WhatsApp",footer:'Famille Mohamed Naceur vous souhaite <em>Bon appétit !</em>',max:n=>`maximum ${n} choix`,one:"1 choix"},
+ar:{title1:"كَوِّن",title2:"فطورك لدى عائلة محمد ناصر",intro:"اختر ما ترغب فيه لفطورك. يتم تطبيق الحد الأقصى للاختيارات تلقائياً.",name:"الاسم",special:"هل لديك رغبة خاصة؟",sum:"فطورك",preview:"عرض الملخص",send:"إرسال عبر واتساب",footer:'عائلة محمد ناصر تتمنى لكم <em>شهية طيبة !</em>',max:n=>`حد أقصى ${n} اختيارين`,one:"اختيار واحد"},
+bi:{title1:"COMPOSEZ | كَوِّن",title2:"votre petit-déjeuner chez la famille Mohamed Naceur | فطورك لدى عائلة محمد ناصر",intro:"Composez votre plateau — اختر ما ترغب فيه. Les limites sont automatiques — يتم تطبيق الحد تلقائياً.",name:"Prénom / الاسم",special:"Une envie particulière ? / هل لديك رغبة خاصة؟",sum:"Votre plateau / فطورك",preview:"Récapitulatif / الملخص",send:"WhatsApp / واتساب",footer:'Famille Mohamed Naceur — عائلة محمد ناصر<br><em>Bon appétit ! — شهية طيبة !</em>',max:n=>`maximum ${n} / حد أقصى ${n}`,one:"1 choix / اختيار واحد"}
+};
+function label(fr,ar){return lang==="fr"?fr:lang==="ar"?ar:`${fr}<br><span class="ar">${ar}</span>`}
+function render(){
+ document.documentElement.lang=lang==="ar"?"ar":"fr";
+ const q=t[lang]; ["title1","title2","intro"].forEach(id=>document.getElementById(id).innerHTML=q[id]);
+ nameLabel.innerHTML=q.name; specialLabel.innerHTML=q.special; sumTitle.innerHTML=q.sum; preview.innerHTML=q.preview; send.innerHTML=q.send; footer.innerHTML=q.footer;
+ menu.innerHTML="";
+ sections.forEach((s,si)=>{
+  chosen[s.id]??=new Set();
+  const sec=document.createElement("section");sec.className="section";
+  sec.innerHTML=`<h2>${si+1}. ${label(s.fr,s.ar)} <span class="hint">(${s.max===1?q.one:q.max(s.max)})</span></h2><div class="grid"></div><div class="counter"></div>`;
+  const grid=sec.querySelector(".grid");
+  s.items.forEach((it,ii)=>{
+   const el=document.createElement("label"); el.className="item";
+   const checked=chosen[s.id].has(ii);
+   el.innerHTML=`<span class="emoji">${it[0]}</span><span class="label">${label(it[1],it[2])}</span><input type="checkbox" ${checked?"checked":""}>`;
+   const cb=el.querySelector("input"); cb.onchange=()=>toggle(s,ii,cb);
+   grid.appendChild(el);
+  });
+  menu.appendChild(sec); updateSection(s);
+ });
+ updateSummary();
+}
+function toggle(s,ii,cb){
+ const set=chosen[s.id];
+ if(cb.checked){
+  if(set.size>=s.max){cb.checked=false;return}
+  if(s.id==="eggs" && ii===s.items.length-1) set.clear();
+  else if(s.id==="eggs") set.delete(s.items.length-1);
+  set.add(ii);
+ } else set.delete(ii);
+ render();
+}
+function updateSection(s){
+ const sec=[...document.querySelectorAll(".section")].find(x=>x.querySelector("h2").textContent.includes(lang==="ar"?s.ar:s.fr)) || null;
+ if(!sec)return;
+ const full=chosen[s.id].size>=s.max;
+ [...sec.querySelectorAll(".item")].forEach((el,ii)=>{
+   const cb=el.querySelector("input"), sel=chosen[s.id].has(ii);
+   cb.checked=sel; cb.disabled=full&&!sel; el.classList.toggle("disabled",cb.disabled);
+ });
+ sec.querySelector(".counter").textContent=`${chosen[s.id].size} / ${s.max}`;
+}
+function plainName(it){return lang==="fr"?it[1]:lang==="ar"?it[2]:`${it[1]} / ${it[2]}`}
+function summaryText(){
+ const guest=document.getElementById("guest").value.trim()||"—";
+ let out=(lang==="ar"?`فطور — ${guest}`:lang==="bi"?`Petit-déjeuner / فطور — ${guest}`:`Petit-déjeuner — ${guest}`)+"\n\n";
+ sections.forEach(s=>{
+  const vals=[...chosen[s.id]].map(i=>plainName(s.items[i]));
+  if(vals.length) out+=(lang==="fr"?s.fr:lang==="ar"?s.ar:`${s.fr} / ${s.ar}`)+": "+vals.join(", ")+"\n";
+ });
+ const sp=document.getElementById("special").value.trim();
+ if(sp) out+="\n"+(lang==="ar"?"طلب خاص":lang==="bi"?"Demande particulière / طلب خاص":"Demande particulière")+": "+sp+"\n";
+ out+="\n"+(lang==="ar"?"عائلة محمد ناصر تتمنى لكم شهية طيبة 🌷":lang==="bi"?"Famille Mohamed Naceur — عائلة محمد ناصر\nBon appétit ! — شهية طيبة ! 🌷":"Famille Mohamed Naceur vous souhaite Bon appétit ! 🌷");
+ return out;
+}
+function updateSummary(){summary.textContent=summaryText()}
+document.querySelectorAll(".langs button").forEach(b=>b.onclick=()=>{lang=b.dataset.lang;document.querySelectorAll(".langs button").forEach(x=>x.classList.toggle("active",x===b));render()});
+guest.oninput=updateSummary; special.oninput=updateSummary;
+preview.onclick=()=>{updateSummary();summaryBox.scrollIntoView({behavior:"smooth",block:"center"})};
+send.onclick=()=>{updateSummary(); window.location.href="https://wa.me/?text="+encodeURIComponent(summary.textContent)};
+render();
+</script>
+</body></html>
