@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Petit-déjeuner — Famille Mohamed Naceur</title>
+<style>
+:root{--bg:#fffaf2;--card:#fff;--ink:#18243b;--muted:#6d6a65;--line:#eadfce;--accent:#8b4b22;--green:#58752c;--shadow:0 8px 24px rgba(55,38,20,.08)}
+*{box-sizing:border-box} body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:linear-gradient(#fffaf2,#fffdf9);color:var(--ink)}
+.wrap{max-width:820px;margin:auto;padding:18px 14px 110px}.hero{text-align:center;padding:16px 8px 10px}.hero h1{font-family:Georgia,serif;font-size:clamp(34px,8vw,56px);margin:0;color:#16315e}.hero .script{font-family:Georgia,serif;font-style:italic;color:var(--accent);font-size:clamp(25px,6vw,40px)}
+.langs{display:flex;gap:8px;justify-content:center;position:sticky;top:8px;z-index:5;margin:8px 0 18px}.langs button{border:1px solid var(--line);background:#fff;padding:10px 14px;border-radius:999px;font-weight:800;box-shadow:var(--shadow)}.langs button.active{background:#173866;color:#fff}
+.intro,.name,.special{background:#fff;border:1px solid var(--line);border-radius:18px;padding:14px;box-shadow:var(--shadow);margin-bottom:12px}.name input,.special textarea{width:100%;border:1px solid #d8c9b4;border-radius:12px;padding:12px;font-size:17px;margin-top:8px}.special textarea{min-height:75px}
+.section{background:var(--card);border:1px solid var(--line);border-radius:20px;overflow:hidden;margin:13px 0;box-shadow:var(--shadow)}.section h2{margin:0;padding:12px 14px;background:#f3e5cf;color:#5d301a;font-size:19px}.hint{font-size:13px;font-weight:600;opacity:.75}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;padding:12px}.item{border:1px solid #eadfce;border-radius:16px;padding:10px;display:grid;grid-template-columns:54px 1fr 26px;gap:8px;align-items:center;min-height:78px;background:#fff}.emoji{font-size:37px;text-align:center}.foodimg{width:54px;height:54px;object-fit:contain;display:block}.label{font-weight:750;line-height:1.15}.ar{font-family:Tahoma,Arial,sans-serif;direction:rtl}.item input{width:22px;height:22px;accent-color:#55752a}.item.disabled{opacity:.42;background:#f4f1ec}.counter{padding:0 14px 12px;font-size:13px;color:var(--muted)}
+.summary{background:#fff;border:1px solid var(--line);border-radius:20px;padding:15px;box-shadow:var(--shadow);margin-top:14px}.summary h2{margin:0 0 10px}.summary pre{white-space:pre-wrap;font:inherit;line-height:1.45;margin:0}
+.actions{position:fixed;left:0;right:0;bottom:0;background:rgba(255,250,242,.96);backdrop-filter:blur(10px);padding:10px 14px calc(10px + env(safe-area-inset-bottom));border-top:1px solid var(--line);display:flex;gap:10px;justify-content:center}.actions button{max-width:390px;flex:1;border:0;border-radius:15px;padding:15px 12px;font-size:16px;font-weight:900}.preview{background:#e9dfcf;color:#263247}.send{background:#1fa855;color:white}
+.footer{text-align:center;font-family:Georgia,serif;font-size:22px;color:#173866;padding:25px 10px 0}.footer em{color:#a33b20}
+.notice{font-size:13px;color:#8b3c2d;font-weight:700;margin-top:6px}.choice-row{display:flex;flex-wrap:wrap;gap:9px;margin-top:9px}.choice-pill{display:flex;align-items:center;gap:7px;border:1px solid #d8c9b4;border-radius:999px;padding:10px 13px;background:#fff;font-weight:800}.choice-pill input{width:19px;height:19px;accent-color:#55752a}
+@media(min-width:650px){.grid{grid-template-columns:repeat(3,1fr)}}
+
+.arabic-mode .wrap{text-align:right}
+.arabic-mode .hero{text-align:center}
+.arabic-mode .intro,
+.arabic-mode .name,
+.arabic-mode .special,
+.arabic-mode .summary,
+.arabic-mode .section h2,
+.arabic-mode .counter,
+.arabic-mode .label{text-align:right;direction:rtl}
+.arabic-mode .grid{direction:rtl}
+.arabic-mode .item{grid-template-columns:26px 1fr 54px;direction:rtl}
+.arabic-mode .item input{grid-column:1}
+.arabic-mode .item .label{grid-column:2}
+.arabic-mode .item .emoji,
+.arabic-mode .item .foodimg{grid-column:3}
+.arabic-mode .choice-row{justify-content:flex-start;direction:rtl}
+.arabic-mode .choice-pill{direction:rtl}
+.arabic-mode input[type="text"],
+.arabic-mode input:not([type]),
+.arabic-mode textarea{text-align:right;direction:rtl}
+.arabic-mode .summary pre{text-align:right;direction:rtl}
+.arabic-mode .footer{text-align:center}
+.arabic-mode .langs{direction:ltr}
+
+
+.bilingual-mode .label{text-align:right}
+.bilingual-mode .label .ar{display:block;text-align:right;direction:rtl;font-weight:800}
+.bilingual-mode .section h2{text-align:right}
+.bilingual-mode #welcome{text-align:right}
+.bilingual-mode .summary pre{text-align:right}
+
+.language-note{font-size:14px;color:#5f584f;background:#fffdf8}.arabic-mode .language-note,.bilingual-mode .language-note{text-align:right;direction:rtl}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="hero">
+    <h1 id="title1">COMPOSEZ</h1><div class="script" id="title2">votre petit-déjeuner chez la famille Mohamed Naceur</div>
+  </div>
+  <div class="langs">
+    <button data-lang="fr" class="active">Français</button>
+    <button data-lang="ar">العربية</button>
+    <button data-lang="bi">FR / عربي</button>
+  </div>
+  
+  <div class="intro language-note" id="languageNote"></div>
+  <div class="intro" id="welcome">
+    <strong>Bienvenue chez Mohamed Naceur</strong><br><br>
+    Vous êtes invités à partager un petit-déjeuner chez Mohamed Naceur, dans le cadre du renforcement des liens familiaux et en application de la recommandation de notre mère, qu’Allah lui accorde Sa miséricorde, de rester unis et proches les uns des autres.<br><br>
+    Le choix du menu vous est proposé afin de mieux vous servir et de répondre au mieux à vos goûts et à vos envies.<br><br><strong>Important :</strong> ce formulaire doit être rempli séparément pour chacun des invités, y compris les enfants. Merci de l’envoyer autant de fois qu’il y a de personnes, en indiquant à chaque envoi un prénom différent et unique.<br><br><strong>Important :</strong> ce formulaire doit être rempli séparément pour chacun des invités, y compris les enfants. Merci de l’envoyer autant de fois qu’il y a de personnes, en indiquant à chaque envoi un prénom différent et unique.
+  </div>
+<div class="intro" id="intro">Choisissez ce que vous souhaitez pour votre plateau. Les limites sont appliquées automatiquement.</div>
+  <div class="name"><strong id="nameLabel">Prénom</strong><input id="guest" autocomplete="name"></div><div class="name" id="booking"><strong id="dateLabel">Date du petit-déjeuner</strong><div class="choice-row"><label class="choice-pill"><input type="radio" name="breakfastDate" value="23/08/2026"><span class="date-txt" data-fr="Dimanche 23/08/2026" data-ar="الأحد 2026/08/23">23/08/2026</span></label><label class="choice-pill"><input type="radio" name="breakfastDate" value="30/08/2026"><span class="date-txt" data-fr="Dimanche 30/08/2026" data-ar="الأحد 2026/08/30">30/08/2026</span></label></div><strong id="timeLabel" style="display:block;margin-top:14px">Heure</strong><div class="choice-row"><label class="choice-pill"><input type="radio" name="breakfastTime" value="08:00"><span class="time-txt" data-fr="8h00" data-ar="الثامنة">8h00</span></label><label class="choice-pill"><input type="radio" name="breakfastTime" value="08:30"><span class="time-txt" data-fr="8h30" data-ar="الثامنة والنصف">8h30</span></label><label class="choice-pill"><input type="radio" name="breakfastTime" value="09:00"><span class="time-txt" data-fr="9h00" data-ar="التاسعة">9h00</span></label></div><div class="notice" id="bookingNotice"></div></div>
+  <div id="menu"></div>
+  <div class="special"><strong id="specialLabel">Une envie particulière ?</strong><textarea id="special"></textarea></div>
+  <div class="summary" id="summaryBox"><h2 id="sumTitle">Votre plateau</h2><pre id="summary"></pre></div>
+  
+</div>
+<div class="actions">
+  <button class="preview" id="preview">Voir le récapitulatif</button>
+  <button class="send" id="send">Envoyer par WhatsApp</button>
+</div>
+<script>
+const sections=[
+{id:"bread",fr:"Pain & viennoiserie",ar:"الخبز والمعجنات",max:2,items:[
+["🥖","Baguette / pain frais","باڨات / خبز طازج"],["🍞","Pain complet","خبز كامل"],["🍞","Toast grillé","توست محمص"],["data:image/svg+xml;base64,CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2aWV3Qm94PSIwIDAgMTIwIDgwIj4KPHJlY3Qgd2lkdGg9IjEyMCIgaGVpZ2h0PSI4MCIgZmlsbD0id2hpdGUiLz4KPHBhdGggZD0iTTE4IDQ3YzgtMjYgMzEtMzQgNDQtMTYgMTMtMTggMzYtMTAgNDAgMTYtOS05LTE4LTEyLTI2LTctNyA0LTEwIDEyLTE0IDIwLTQtOC04LTE2LTE1LTIwLTgtNS0xNy0yLTI5IDd6IiBmaWxsPSIjZDk4YTFkIiBzdHJva2U9IiM5YjU3MTEiIHN0cm9rZS13aWR0aD0iMyIvPgo8cGF0aCBkPSJNMzYgMzFjNCA3IDcgMTQgOCAyMk02MiAyOGMwIDggMCAxNiAwIDI4TTg0IDMyYy00IDctNyAxNC04IDIxIiBmaWxsPSJub25lIiBzdHJva2U9IiNmNWJmNTUiIHN0cm9rZS13aWR0aD0iNCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+Cjwvc3ZnPg==","Croissant","كرواسون"],["data:image/svg+xml;base64,CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2aWV3Qm94PSIwIDAgMTIwIDgwIj4KPHJlY3Qgd2lkdGg9IjEyMCIgaGVpZ2h0PSI4MCIgZmlsbD0id2hpdGUiLz4KPHJlY3QgeD0iMjIiIHk9IjIxIiB3aWR0aD0iNzYiIGhlaWdodD0iNDAiIHJ4PSIxMiIgZmlsbD0iI2Q5OTEyNSIgc3Ryb2tlPSIjOWI1NzExIiBzdHJva2Utd2lkdGg9IjMiLz4KPHBhdGggZD0iTTM1IDIzYzUgMTAgNSAyNiAwIDM2TTU4IDIzYzUgMTAgNSAyNiAwIDM2TTgxIDIzYzUgMTAgNSAyNiAwIDM2IiBzdHJva2U9IiNmN2M2NmEiIHN0cm9rZS13aWR0aD0iNCIgZmlsbD0ibm9uZSIvPgo8cmVjdCB4PSIzNCIgeT0iNDkiIHdpZHRoPSI4IiBoZWlnaHQ9IjEzIiByeD0iMiIgZmlsbD0iIzRiMjUxNSIvPjxyZWN0IHg9Ijc3IiB5PSI0OSIgd2lkdGg9IjgiIGhlaWdodD0iMTMiIHJ4PSIyIiBmaWxsPSIjNGIyNTE1Ii8+Cjwvc3ZnPg==","Pain au chocolat","خبز بالشوكولاتة"],["🫓","Mlawi","ملاوي"],["🫓","Pain tabouna","خبز طابونة"]]},
+{id:"eggs",fr:"Œufs",ar:"البيض",max:1,items:[
+["data:image/svg+xml;base64,CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2aWV3Qm94PSIwIDAgMTIwIDgwIj4KPHJlY3Qgd2lkdGg9IjEyMCIgaGVpZ2h0PSI4MCIgZmlsbD0id2hpdGUiLz4KPHBhdGggZD0iTTEzIDQzYzItMTcgMTgtMjYgMzQtMTkgOC05IDI1LTggMzEgMiAxNy00IDI5IDcgMjkgMjEtNSAxNS0yMiAxOS0zNyAxMy0xMCA4LTI3IDctMzUtMi0xMiAxLTIxLTUtMjItMTV6IiBmaWxsPSIjZmZmZGY2IiBzdHJva2U9IiNkOGQwYzUiIHN0cm9rZS13aWR0aD0iMiIvPgo8Y2lyY2xlIGN4PSI0MyIgY3k9IjQyIiByPSIxMiIgZmlsbD0iI2Y1YTgwMCIvPjxjaXJjbGUgY3g9Ijc3IiBjeT0iNDIiIHI9IjEyIiBmaWxsPSIjZjVhODAwIi8+Cjwvc3ZnPg==","Œufs au plat","بيض مقلي"],["data:image/svg+xml;base64,CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2aWV3Qm94PSIwIDAgMTIwIDgwIj4KPHJlY3Qgd2lkdGg9IjEyMCIgaGVpZ2h0PSI4MCIgZmlsbD0id2hpdGUiLz4KPHBhdGggZD0iTTE4IDUxYzEwLTIyIDI0LTMxIDQyLTMxczM0IDkgNDIgMzFjLTE2IDEwLTY3IDEwLTg0IDB6IiBmaWxsPSIjZjNiMTJiIiBzdHJva2U9IiNjNzdiMTIiIHN0cm9rZS13aWR0aD0iMyIvPgo8cGF0aCBkPSJNMjkgNDVjMTIgNSA0OCA2IDY0IDAiIHN0cm9rZT0iI2ZmZDc2YyIgc3Ryb2tlLXdpZHRoPSI0IiBmaWxsPSJub25lIi8+CjxjaXJjbGUgY3g9IjQ1IiBjeT0iMzUiIHI9IjIiIGZpbGw9IiNkNThhMTgiLz48Y2lyY2xlIGN4PSI2NiIgY3k9IjMyIiByPSIyIiBmaWxsPSIjZDU4YTE4Ii8+PGNpcmNsZSBjeD0iODAiIGN5PSIzOSIgcj0iMiIgZmlsbD0iI2Q1OGExOCIvPgo8L3N2Zz4=","Omelette nature","أومليت طبيعي"],["🧀","Omelette au fromage","أومليت بالجبن"],["data:image/svg+xml;base64,CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2aWV3Qm94PSIwIDAgMTIwIDgwIj4KPHJlY3Qgd2lkdGg9IjEyMCIgaGVpZ2h0PSI4MCIgZmlsbD0id2hpdGUiLz4KPGVsbGlwc2UgY3g9IjYwIiBjeT0iNTkiIHJ4PSI0MyIgcnk9IjEwIiBmaWxsPSIjZTllNGRjIi8+CjxwYXRoIGQ9Ik0yOSA1MGM0LTExIDEyLTEyIDE4LTUgMy0xMyAxNS0xNSAyMi01IDctOCAxOC01IDE5IDYgOS0yIDE0IDUgMTEgMTJIMjVjLTUtNC0zLTcgNC04eiIgZmlsbD0iI2VmYjEyYiIgc3Ryb2tlPSIjYzc3YjEyIiBzdHJva2Utd2lkdGg9IjIiLz4KPHBhdGggZD0iTTM5IDQ4bDkgM20xMC05IDYgN20xNC00IDcgNSIgc3Ryb2tlPSIjZmZkOTZiIiBzdHJva2Utd2lkdGg9IjMiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8L3N2Zz4=","Œufs brouillés","بيض مخفوق"],["🥚","Œufs durs","بيض مسلوق"],["🚫","Sans œufs","بدون بيض"]]},
+{id:"savory",fr:"Accompagnements salés",ar:"المرافقات المالحة",max:3,items:[
+["🧀","Fromage","جبن"],["🐟","Thon","تونة"],["🫒","Olives","زيتون"],["🥗","Tomates & concombre","طماطم وخيار"],["🫒","Huile d’olive","زيت زيتون"],["🌶️","Harissa","هريسة"]]},
+{id:"sweet",fr:"Côté sucré",ar:"الخيارات الحلوة",max:3,items:[
+["🧈","Beurre","زبدة"],["🍯","Miel","عسل"],["🍓","Confiture de fraise","مربى الفراولة"],["🍑","Confiture d’abricot","مربى المشمش"],["🍫","Pâte à tartiner chocolat","شوكولاتة للدهن"],["🥣","Bsissa","بسيسة"],["🥛","Yaourt","زبادي"]]},
+{id:"fruit",fr:"Fruits",ar:"الفواكه",max:3,items:[
+["🍉","Pastèque","بطيخ"],["🍈","Melon","شمام"],["🍇","Raisins","عنب"],["🍑","Pêche / nectarine","خوخ / نكتارين"],["🍓","Assiette de fruits de saison","طبق فواكه موسمية"],["🚫","Sans fruits","بدون فواكه"]]},
+{id:"hot",fr:"Boisson chaude",ar:"المشروبات الساخنة",max:3,items:[
+["☕","Café au lait","قهوة بالحليب"],["☕","Café filtre","قهوة مفلترة"],["🍵","Thé","شاي"],["🥛","Lait chaud","حليب ساخن"],["🍫","Chocolat chaud","شوكولاتة ساخنة"],["🥛","Chocolat au lait","شوكولاتة بالحليب"],["🥣","Droo","درع"]]},
+{id:"cold",fr:"Boisson fraîche",ar:"المشروبات الباردة",max:3,items:[
+["🍋","Citronnade","ليموناضة"],["🧃","Jus de fruits","عصير فواكه"],["🥛","Lait froid","حليب بارد"],["💧","Eau plate","ماء عادي"],["🍓","Jus de fraise","عصير فراولة"],["🥭","Jus de mangue","عصير مانجو"]]},
+{id:"extra",fr:"Petit plus",ar:"إضافات صغيرة",max:3,items:[
+["🥣","Granola","جرانولا"],["🌾","Flocons d’avoine","رقائق الشوفان"],["🥜","Fruits secs / amandes","مكسرات / لوز"],["🥛","Yaourt nature","زبادي طبيعي"],["🍯","Miel supplémentaire","عسل إضافي"]]}
+];
+let lang="fr"; const chosen={};
+const t={
+fr:{note:"<strong>Note :</strong> la version française est proposée uniquement pour faciliter l’identification de certains aliments et appellations.",title1:"COMPOSEZ",title2:"votre petit-déjeuner chez la famille Mohamed Naceur",welcome:"<strong>Bienvenue chez Mohamed Naceur</strong><br><br>Vous êtes invités à partager un petit-déjeuner chez Mohamed Naceur, dans le cadre du renforcement des liens familiaux et en application de la recommandation de notre mère, qu’Allah lui accorde Sa miséricorde, de rester unis et proches les uns des autres.<br><br>Le choix du menu vous est proposé afin de mieux vous servir et de répondre au mieux à vos goûts et à vos envies.<br><br><strong>Important :</strong> ce formulaire doit être rempli séparément pour chacun des invités, y compris les enfants. Merci de l’envoyer autant de fois qu’il y a de personnes, en indiquant à chaque envoi un prénom différent et unique.",intro:"Choisissez ce que vous souhaitez pour votre plateau. Les limites sont appliquées automatiquement.",name:"Prénom",date:"Date du petit-déjeuner",time:"Heure",special:"Une envie particulière ?",sum:"Votre plateau",preview:"Voir le récapitulatif",send:"Envoyer par WhatsApp",footer:'Famille Mohamed Naceur vous souhaite <em>Bon appétit !</em>',max:n=>`maximum ${n} choix`,one:"1 choix"},
+ar:{note:"<strong>تنويه:</strong> تمت إضافة النسخة الفرنسية لا لعجز في استعمال اللغة العربية، وإنما لتسهيل التعرّف على أسماء بعض المأكولات والمشروبات وتفادي أي التباس.",title1:"كَوِّن",title2:"فطورك لدى عائلة محمد الناصر",welcome:"<strong>مرحبا بكم لدى محمد الناصر</strong><br><br>أنتم مدعوون لمشاركة فطور عائلي لدى محمد الناصر، وذلك في إطار تعزيز الروابط العائلية وتجسيدا لوصية والدتنا رحمها الله بأن نبقى متحدين ومتقاربين فيما بيننا.<br><br>وقد تم اقتراح اختيار قائمة الفطور مسبقا حتى نتمكن من خدمتكم على أفضل وجه والاستجابة قدر الإمكان لأذواقكم ورغباتكم.<br><br><strong>هام:</strong> يرجى ملء هذا النموذج بصفة منفصلة لكل مدعو، بما في ذلك الأطفال، وإرساله بعدد الأشخاص المدعوين، مع إدخال اسم أول مختلف وفريد في كل إرسال.",intro:"اختر ما ترغب فيه لفطورك. يتم تطبيق الحد الأقصى للاختيارات تلقائياً.",name:"الاسم",date:"تاريخ الفطور",time:"الساعة",special:"هل لديك رغبة خاصة؟",sum:"فطورك",preview:"عرض الملخص",send:"إرسال عبر واتساب",footer:'عائلة محمد الناصر تتمنى لكم <em>شهية طيبة !</em>',max:n=>`حد أقصى ${n} اختيارين`,one:"اختيار واحد"},
+bi:{note:"<strong>تنويه:</strong> تمت إضافة النسخة الفرنسية لا لعجز في استعمال اللغة العربية، وإنما لتسهيل التعرّف على أسماء بعض المأكولات والمشروبات وتفادي أي التباس.<br><span dir=\"ltr\"><strong>Note :</strong> la version française est proposée uniquement pour faciliter l’identification de certains aliments et appellations.</span>",title1:"كَوِّن | COMPOSEZ",title2:"فطورك لدى عائلة محمد الناصر | votre petit-déjeuner chez la famille Mohamed Naceur",welcome:"<strong>Bienvenue chez Mohamed Naceur — مرحبا بكم لدى محمد الناصر</strong><br><br><span class=\"ar\">أنتم مدعوون لمشاركة فطور عائلي لدى محمد الناصر لتعزيز الروابط العائلية والبقاء متحدين، تجسيدا لوصية والدتنا رحمها الله.</span><br>Vous êtes invités à partager un petit-déjeuner chez Mohamed Naceur afin de renforcer les liens familiaux et de rester unis, conformément à la recommandation de notre mère, qu’Allah lui accorde Sa miséricorde.<br><br><span class=\"ar\">وقد تم اقتراح اختيار القائمة مسبقا حتى نتمكن من خدمتكم بشكل أفضل والاستجابة لرغباتكم.</span><br>Le choix du menu est proposé pour mieux vous servir et répondre à vos envies.<br><br><strong>Important / هام :</strong> ce formulaire doit être rempli séparément pour chaque invité, y compris les enfants, et envoyé autant de fois qu’il y a de personnes, avec un prénom différent à chaque envoi.<br><span class=\"ar\">يرجى ملء هذا النموذج لكل مدعو على حدة، بما في ذلك الأطفال، وإرساله بعدد الأشخاص مع اسم أول مختلف في كل مرة.</span>",intro:"Composez votre plateau — اختر ما ترغب فيه. Les limites sont automatiques — يتم تطبيق الحد تلقائياً.",name:"الاسم / Prénom",date:"تاريخ الفطور / Date du petit-déjeuner",time:"الساعة / Heure",special:"هل لديك رغبة خاصة؟ / Une envie particulière ?",sum:"فطورك / Votre plateau",preview:"الملخص / Récapitulatif",send:"واتساب / WhatsApp",footer:'Famille Mohamed Naceur — عائلة محمد الناصر<br><em>Bon appétit ! — شهية طيبة !</em>',max:n=>`maximum ${n} / حد أقصى ${n}`,one:"1 choix / اختيار واحد"}
+};
+function visual(v){return v.startsWith("data:image/")?`<img class="foodimg" src="${v}" alt="">`:`<span class="emoji">${v}</span>`}
+function label(fr,ar){return lang==="fr"?fr:lang==="ar"?ar:`<span class="ar">${ar}</span><br>${fr}`}
+function render(){
+ document.documentElement.lang=lang==="ar"?"ar":"fr";
+ document.body.classList.toggle("arabic-mode", lang==="ar"); document.body.classList.toggle("bilingual-mode", lang==="bi");
+ document.body.dir = lang==="ar" ? "rtl" : "ltr";
+ const q=t[lang]; ["title1","title2","intro","welcome"].forEach(id=>document.getElementById(id).innerHTML=q[id]); languageNote.innerHTML=q.note;
+ nameLabel.innerHTML=q.name; dateLabel.innerHTML=q.date; timeLabel.innerHTML=q.time; specialLabel.innerHTML=q.special; document.querySelectorAll(".time-txt").forEach(el=>{el.textContent=lang==="ar"?el.dataset.ar:lang==="bi"?el.dataset.ar+" / "+el.dataset.fr:el.dataset.fr}); document.querySelectorAll(".date-txt").forEach(el=>{el.textContent=lang==="ar"?el.dataset.ar:lang==="bi"?el.dataset.ar+" / "+el.dataset.fr:el.dataset.fr}); sumTitle.innerHTML=q.sum; preview.innerHTML=q.preview; send.innerHTML=q.send; 
+ menu.innerHTML="";
+ sections.forEach((s,si)=>{
+  chosen[s.id]??=new Set();
+  const sec=document.createElement("section");sec.className="section";
+  sec.innerHTML=`<h2>${si+1}. ${label(s.fr,s.ar)} <span class="hint">(${s.max===1?q.one:q.max(s.max)})</span></h2><div class="grid"></div><div class="counter"></div>`;
+  const grid=sec.querySelector(".grid");
+  s.items.forEach((it,ii)=>{
+   const el=document.createElement("label"); el.className="item";
+   const checked=chosen[s.id].has(ii);
+   el.innerHTML=`${visual(it[0])}<span class="label">${label(it[1],it[2])}</span><input type="checkbox" ${checked?"checked":""}>`;
+   const cb=el.querySelector("input"); cb.onchange=()=>toggle(s,ii,cb);
+   grid.appendChild(el);
+  });
+  menu.appendChild(sec); updateSection(s);
+ });
+ updateSummary();
+}
+function toggle(s,ii,cb){
+ const set=chosen[s.id];
+ if(cb.checked){
+  if(set.size>=s.max){cb.checked=false;return}
+  if(s.id==="eggs" && ii===s.items.length-1) set.clear();
+  else if(s.id==="eggs") set.delete(s.items.length-1);
+  set.add(ii);
+ } else set.delete(ii);
+ render();
+}
+function updateSection(s){
+ const sec=[...document.querySelectorAll(".section")].find(x=>x.querySelector("h2").textContent.includes(lang==="ar"?s.ar:s.fr)) || null;
+ if(!sec)return;
+ const full=chosen[s.id].size>=s.max;
+ [...sec.querySelectorAll(".item")].forEach((el,ii)=>{
+   const cb=el.querySelector("input"), sel=chosen[s.id].has(ii);
+   cb.checked=sel; cb.disabled=full&&!sel; el.classList.toggle("disabled",cb.disabled);
+ });
+ sec.querySelector(".counter").textContent=`${chosen[s.id].size} / ${s.max}`;
+}
+function plainName(it){return lang==="fr"?it[1]:lang==="ar"?it[2]:`${it[1]} / ${it[2]}`}
+function summaryText(){
+ const guest=document.getElementById("guest").value.trim()||"—";
+ const dv=(document.querySelector('input[name="breakfastDate"]:checked')||{}).value||"—"; const arDates={"23/08/2026":"الأحد 2026/08/23","30/08/2026":"الأحد 2026/08/30"}; const frDates={"23/08/2026":"Dimanche 23/08/2026","30/08/2026":"Dimanche 30/08/2026"}; const d=dv==="—"?"—":lang==="ar"?arDates[dv]:lang==="bi"?arDates[dv]+" / "+frDates[dv]:frDates[dv]; const tmv=(document.querySelector('input[name="breakfastTime"]:checked')||{}).value||"—"; const arTimes={"08:00":"الثامنة","08:30":"الثامنة والنصف","09:00":"التاسعة"}; const frTimes={"08:00":"8h00","08:30":"8h30","09:00":"9h00"}; const tm=tmv==="—"?"—":lang==="ar"?arTimes[tmv]:lang==="bi"?arTimes[tmv]+" / "+frTimes[tmv]:frTimes[tmv]; let out=(lang==="ar"?`فطور — ${guest}`:lang==="bi"?`فطور / Petit-déjeuner — ${guest}`:`Petit-déjeuner — ${guest}`)+"\n"; out+=(lang==="ar"?`التاريخ: ${d}\nالساعة: ${tm}`:lang==="bi"?`التاريخ / Date: ${d}\nالساعة / Heure: ${tm}`:`Date : ${d}\nHeure : ${tm}`)+"\n\n";
+ sections.forEach(s=>{
+  const vals=[...chosen[s.id]].map(i=>plainName(s.items[i]));
+  if(vals.length) out+=(lang==="fr"?s.fr:lang==="ar"?s.ar:`${s.ar} / ${s.fr}`)+": "+vals.join(", ")+"\n";
+ });
+ const sp=document.getElementById("special").value.trim();
+ if(sp) out+="\n"+(lang==="ar"?"طلب خاص":lang==="bi"?"طلب خاص / Demande particulière":"Demande particulière")+": "+sp+"\n";
+ out+="\n"+(lang==="ar"?"عائلة محمد الناصر تتمنى لكم شهية طيبة 🌷":lang==="bi"?"Famille Mohamed Naceur — عائلة محمد الناصر\nBon appétit ! — شهية طيبة ! 🌷":"Famille Mohamed Naceur vous souhaite Bon appétit ! 🌷");
+ return out;
+}
+function updateSummary(){summary.textContent=summaryText()}
+document.querySelectorAll(".langs button").forEach(b=>b.onclick=()=>{lang=b.dataset.lang;document.querySelectorAll(".langs button").forEach(x=>x.classList.toggle("active",x===b));render()});
+guest.oninput=updateSummary; special.oninput=updateSummary; document.querySelectorAll('input[name="breakfastDate"],input[name="breakfastTime"]').forEach(x=>x.onchange=updateSummary);
+preview.onclick=()=>{updateSummary();summaryBox.scrollIntoView({behavior:"smooth",block:"center"})};
+send.onclick=()=>{const d=document.querySelector('input[name="breakfastDate"]:checked'),tm=document.querySelector('input[name="breakfastTime"]:checked');if(!d||!tm){bookingNotice.textContent=lang==="ar"?"يرجى اختيار التاريخ والساعة قبل الإرسال.":lang==="bi"?"Veuillez choisir la date et l’heure / يرجى اختيار التاريخ والساعة.":"Veuillez choisir la date et l’heure avant l’envoi.";booking.scrollIntoView({behavior:"smooth",block:"center"});return}bookingNotice.textContent="";updateSummary();window.location.href="https://wa.me/?text="+encodeURIComponent(summary.textContent)};
+render();
+</script>
+</body></html>
