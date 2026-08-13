@@ -243,6 +243,86 @@
   }
 }
 
+
+/* V21 — cartes compactes : image, nom et case sur une seule ligne */
+.item{
+  min-height:72px !important;
+  padding:9px 10px !important;
+  display:grid !important;
+  grid-template-columns:52px minmax(0,1fr) 28px !important;
+  align-items:center !important;
+  gap:10px !important;
+}
+.item .emoji,
+.item .foodimg{
+  grid-column:1 !important;
+  grid-row:1 !important;
+  justify-self:center !important;
+  align-self:center !important;
+  margin:0 !important;
+}
+.item .label{
+  grid-column:2 !important;
+  grid-row:1 !important;
+  align-self:center !important;
+  margin:0 !important;
+  min-height:0 !important;
+  line-height:1.3 !important;
+}
+.item input[type="checkbox"]{
+  grid-column:3 !important;
+  grid-row:1 !important;
+  justify-self:center !important;
+  align-self:center !important;
+  margin:0 !important;
+}
+
+/* Arabe : même structure, texte aligné à droite */
+.arabic-mode .item{
+  direction:ltr !important;
+  grid-template-columns:52px minmax(0,1fr) 28px !important;
+}
+.arabic-mode .item .label{
+  direction:rtl !important;
+  text-align:right !important;
+}
+
+/* Bilingue : arabe puis français, sans augmenter inutilement la hauteur */
+.bilingual-mode .item{
+  direction:ltr !important;
+  grid-template-columns:52px minmax(0,1fr) 28px !important;
+}
+.bilingual-mode .item .label{
+  direction:rtl !important;
+  text-align:right !important;
+}
+.bilingual-mode .item .label .ar{
+  display:block !important;
+  margin-bottom:2px !important;
+}
+.bilingual-mode .item .label br{
+  display:block !important;
+}
+
+/* Smartphone : cartes encore plus compactes */
+@media(max-width:600px){
+  .grid{gap:7px !important;padding:7px !important}
+  .item{
+    min-height:66px !important;
+    padding:7px 8px !important;
+    grid-template-columns:44px minmax(0,1fr) 26px !important;
+    gap:8px !important;
+  }
+  .arabic-mode .item,
+  .bilingual-mode .item{
+    grid-template-columns:44px minmax(0,1fr) 26px !important;
+  }
+  .foodimg{width:44px !important;height:44px !important}
+  .emoji{font-size:30px !important}
+  .item .label{font-size:15px !important}
+  .item input[type="checkbox"]{width:22px !important;height:22px !important}
+}
+
 </style>
 </head>
 <body>
@@ -295,7 +375,7 @@ const sections=[
 {id:"eggs",fr:"Œufs",ar:"البيض",max:1,items:[
 ["data:image/svg+xml;base64,CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2aWV3Qm94PSIwIDAgMTIwIDgwIj4KPHJlY3Qgd2lkdGg9IjEyMCIgaGVpZ2h0PSI4MCIgZmlsbD0id2hpdGUiLz4KPHBhdGggZD0iTTEzIDQzYzItMTcgMTgtMjYgMzQtMTkgOC05IDI1LTggMzEgMiAxNy00IDI5IDcgMjkgMjEtNSAxNS0yMiAxOS0zNyAxMy0xMCA4LTI3IDctMzUtMi0xMiAxLTIxLTUtMjItMTV6IiBmaWxsPSIjZmZmZGY2IiBzdHJva2U9IiNkOGQwYzUiIHN0cm9rZS13aWR0aD0iMiIvPgo8Y2lyY2xlIGN4PSI0MyIgY3k9IjQyIiByPSIxMiIgZmlsbD0iI2Y1YTgwMCIvPjxjaXJjbGUgY3g9Ijc3IiBjeT0iNDIiIHI9IjEyIiBmaWxsPSIjZjVhODAwIi8+Cjwvc3ZnPg==","Œufs au plat","بيض مقلي"],["data:image/svg+xml;base64,CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2aWV3Qm94PSIwIDAgMTIwIDgwIj4KPHJlY3Qgd2lkdGg9IjEyMCIgaGVpZ2h0PSI4MCIgZmlsbD0id2hpdGUiLz4KPHBhdGggZD0iTTE4IDUxYzEwLTIyIDI0LTMxIDQyLTMxczM0IDkgNDIgMzFjLTE2IDEwLTY3IDEwLTg0IDB6IiBmaWxsPSIjZjNiMTJiIiBzdHJva2U9IiNjNzdiMTIiIHN0cm9rZS13aWR0aD0iMyIvPgo8cGF0aCBkPSJNMjkgNDVjMTIgNSA0OCA2IDY0IDAiIHN0cm9rZT0iI2ZmZDc2YyIgc3Ryb2tlLXdpZHRoPSI0IiBmaWxsPSJub25lIi8+CjxjaXJjbGUgY3g9IjQ1IiBjeT0iMzUiIHI9IjIiIGZpbGw9IiNkNThhMTgiLz48Y2lyY2xlIGN4PSI2NiIgY3k9IjMyIiByPSIyIiBmaWxsPSIjZDU4YTE4Ii8+PGNpcmNsZSBjeD0iODAiIGN5PSIzOSIgcj0iMiIgZmlsbD0iI2Q1OGExOCIvPgo8L3N2Zz4=","Omelette nature","أومليت طبيعي"],["🧀","Omelette au fromage","أومليت بالجبن"],["🥚","Œufs durs","بيض مسلوق"],["🚫","Sans œufs","بدون بيض"]]},
 {id:"savory",fr:"Accompagnements salés",ar:"المرافقات المالحة",max:5,items:[
-["🧀","Fromage","جبن"],["🐟","Thon","تونة"],["🫒","Olives","زيتون"],["🥗","Tomates & concombre","طماطم وخيار"],["🫒","Huile d’olive","زيت زيتون"],["🌶️","Harissa","هريسة"]]},
+["🧀","Fromage","جبن"],["🐟","Thon","تونة"],["data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAgODAiPgo8cmVjdCB3aWR0aD0iMTIwIiBoZWlnaHQ9IjgwIiBmaWxsPSJ3aGl0ZSIvPgo8ZyBzdHJva2U9IiM0OTY1MmYiIHN0cm9rZS13aWR0aD0iMyIgZmlsbD0ibm9uZSI+PHBhdGggZD0iTTYxIDE1Yy0yIDE3LTggMjgtMjAgMzgiLz48cGF0aCBkPSJNNjAgMjVjMTQgMyAyMiAxMCAyOSAyMSIvPjwvZz4KPGcgZmlsbD0iIzZmN2YzNSIgc3Ryb2tlPSIjNDY1NDIzIiBzdHJva2Utd2lkdGg9IjIiPgo8ZWxsaXBzZSBjeD0iMzkiIGN5PSI1MCIgcng9IjExIiByeT0iMTUiIHRyYW5zZm9ybT0icm90YXRlKDI1IDM5IDUwKSIvPgo8ZWxsaXBzZSBjeD0iNTkiIGN5PSI0MiIgcng9IjExIiByeT0iMTUiIHRyYW5zZm9ybT0icm90YXRlKC0xMiA1OSA0MikiLz4KPGVsbGlwc2UgY3g9IjgyIiBjeT0iNDkiIHJ4PSIxMSIgcnk9IjE1IiB0cmFuc2Zvcm09InJvdGF0ZSgtMjggODIgNDkpIi8+CjwvZz4KPGcgZmlsbD0iIzhhYTg1YSI+PGVsbGlwc2UgY3g9IjQ3IiBjeT0iMjUiIHJ4PSIxMiIgcnk9IjUiIHRyYW5zZm9ybT0icm90YXRlKC0yNSA0NyAyNSkiLz48ZWxsaXBzZSBjeD0iNzYiIGN5PSIzMCIgcng9IjEyIiByeT0iNSIgdHJhbnNmb3JtPSJyb3RhdGUoMjUgNzYgMzApIi8+PC9nPgo8L3N2Zz4=","Olives","زيتون"],["🥗","Tomates & concombre","طماطم وخيار"],["data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAgODAiPgo8cmVjdCB3aWR0aD0iMTIwIiBoZWlnaHQ9IjgwIiBmaWxsPSJ3aGl0ZSIvPgo8cmVjdCB4PSI1MSIgeT0iNyIgd2lkdGg9IjE4IiBoZWlnaHQ9IjkiIHJ4PSIyIiBmaWxsPSIjNTM2YjJlIi8+CjxwYXRoIGQ9Ik00NiAxN2gyOGw1IDEydjM4YzAgNC0zIDctNyA3SDQ4Yy00IDAtNy0zLTctN1YyOXoiIGZpbGw9IiNlNGI3MmUiIHN0cm9rZT0iIzgwNjUxYyIgc3Ryb2tlLXdpZHRoPSIzIi8+CjxyZWN0IHg9IjQ1IiB5PSIzNyIgd2lkdGg9IjMwIiBoZWlnaHQ9IjIwIiByeD0iMyIgZmlsbD0iI2ZmZjZjOSIgc3Ryb2tlPSIjOWM4MTI4Ii8+CjxwYXRoIGQ9Ik02MCA0MWMtNiA3LTcgMTAtNyAxM2gxNGMwLTMtMS02LTctMTN6IiBmaWxsPSIjNmU4NTM0Ii8+Cjwvc3ZnPg==","Huile d’olive","زيت الزيتون"],["🌶️","Harissa","هريسة"]]},
 {id:"sweet",fr:"Côté sucré",ar:"الخيارات الحلوة",max:5,items:[
 ["🧈","Beurre","زبدة"],["🍯","Miel","عسل"],["🍓","Confiture de fraise","مربى الفراولة"],["🍑","Confiture d’abricot","مربى المشمش"],["🍫","Pâte à tartiner chocolat","شوكولاتة للدهن"],["🥣","Bsissa","بسيسة"],["🥛","Yaourt","زبادي (يوغرت)"]]},
 {id:"fruit",fr:"Fruits",ar:"الفواكه",max:3,items:[
