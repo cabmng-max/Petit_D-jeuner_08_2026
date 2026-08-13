@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="fr">
+<html lang="ar" dir="rtl">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
@@ -58,8 +58,8 @@
     <h1 id="title1">COMPOSEZ</h1><div class="script" id="title2">votre petit-déjeuner chez la famille Mohamed Naceur</div>
   </div>
   <div class="langs">
-    <button data-lang="fr" class="active">Français</button>
-    <button data-lang="ar">العربية</button>
+    <button data-lang="fr">Français</button>
+    <button data-lang="ar" class="active">العربية</button>
     <button data-lang="bi">FR / عربي</button>
   </div>
   
@@ -99,7 +99,7 @@ const sections=[
 {id:"extra",fr:"Petit plus",ar:"إضافات صغيرة",max:3,items:[
 ["🥣","Granola","جرانولا"],["🌾","Flocons d’avoine","رقائق الشوفان"],["🥜","Fruits secs / amandes","مكسرات / لوز"],["🥛","Yaourt nature","زبادي طبيعي"],["🍯","Miel supplémentaire","عسل إضافي"]]}
 ];
-let lang="fr"; const chosen={};
+let lang="ar"; const chosen={};
 const t={
 fr:{note:"<strong>Note :</strong> la version française est proposée uniquement pour faciliter l’identification de certains aliments et appellations.",title1:"COMPOSEZ",title2:"votre petit-déjeuner chez la famille Mohamed Naceur",welcome:"<strong>Bienvenue chez Mohamed Naceur</strong><br><br>Vous êtes invités à partager un petit-déjeuner chez Mohamed Naceur, dans le cadre du renforcement des liens familiaux et en application de la recommandation de notre mère, qu’Allah lui accorde Sa miséricorde, de rester unis et proches les uns des autres.<br><br>Le choix du menu vous est proposé afin de mieux vous servir et de répondre au mieux à vos goûts et à vos envies.<br><br><strong>Important :</strong> ce formulaire doit être rempli séparément pour chacun des invités, y compris les enfants. Merci de l’envoyer autant de fois qu’il y a de personnes, en indiquant à chaque envoi un prénom différent et unique.",intro:"Choisissez ce que vous souhaitez pour votre plateau. Les limites sont appliquées automatiquement.",name:"Prénom",date:"Date du petit-déjeuner",time:"Heure",special:"Une envie particulière ?",sum:"Votre plateau",preview:"Voir le récapitulatif",send:"Envoyer par WhatsApp",footer:'Famille Mohamed Naceur vous souhaite <em>Bon appétit !</em>',max:n=>`maximum ${n} choix`,one:"1 choix"},
 ar:{note:"<strong>تنويه:</strong> تمت إضافة النسخة الفرنسية لا لعجز في استعمال اللغة العربية، وإنما لتسهيل التعرّف على أسماء بعض المأكولات والمشروبات وتفادي أي التباس.",title1:"كَوِّن",title2:"فطورك لدى عائلة محمد الناصر",welcome:"<strong>مرحبا بكم لدى محمد الناصر</strong><br><br>أنتم مدعوون لمشاركة فطور عائلي لدى محمد الناصر، وذلك في إطار تعزيز الروابط العائلية وتجسيدا لوصية والدتنا رحمها الله بأن نبقى متحدين ومتقاربين فيما بيننا.<br><br>وقد تم اقتراح اختيار قائمة الفطور مسبقا حتى نتمكن من خدمتكم على أفضل وجه والاستجابة قدر الإمكان لأذواقكم ورغباتكم.<br><br><strong>هام:</strong> يرجى ملء هذا النموذج بصفة منفصلة لكل مدعو، بما في ذلك الأطفال، وإرساله بعدد الأشخاص المدعوين، مع إدخال اسم أول مختلف وفريد في كل إرسال.",intro:"اختر ما ترغب فيه لفطورك. يتم تطبيق الحد الأقصى للاختيارات تلقائياً.",name:"الاسم",date:"تاريخ الفطور",time:"الساعة",special:"هل لديك رغبة خاصة؟",sum:"فطورك",preview:"عرض الملخص",send:"إرسال عبر واتساب",footer:'عائلة محمد الناصر تتمنى لكم <em>شهية طيبة !</em>',max:n=>`حد أقصى ${n} اختيارين`,one:"اختيار واحد"},
